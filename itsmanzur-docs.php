@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Nirdeshio
  * Description:       Product documentation, knowledge base, and help center for WordPress.
- * Version:           1.1.1
+ * Version:           1.2.0
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            ItsDZ
@@ -16,13 +16,23 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ITSDZ_VERSION', '1.1.1' );
-define( 'ITSDZ_DB_VERSION', '1.0.0' );
+define( 'ITSDZ_VERSION', '1.2.0' );
+define( 'ITSDZ_DB_VERSION', '1.1.0' );
 define( 'ITSDZ_PLUGIN_FILE', __FILE__ );
 define( 'ITSDZ_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ITSDZ_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 require_once ITSDZ_PLUGIN_DIR . 'includes/functions.php';
+
+// Must be registered before WooCommerce loads.
+add_action(
+	'before_woocommerce_init',
+	static function () {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', ITSDZ_PLUGIN_FILE, true );
+		}
+	}
+);
 
 $itsdz_autoloader = ITSDZ_PLUGIN_DIR . 'vendor/autoload.php';
 

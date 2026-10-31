@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nirdeshio 1.1.1\n"
+"Project-Id-Version: Nirdeshio 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/itsmanzur-docs\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T03:03:21+00:00\n"
+"POT-Creation-Date: 2026-10-31T14:07:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: tools/make-pot.php\n"
 "X-Domain: itsmanzur-docs\n"
@@ -745,6 +745,7 @@ msgstr ""
 msgid "Docs"
 msgstr ""
 
+#: includes/Integrations/WooCommerce/Product_Tab.php:64
 #: includes/REST/Onboarding_Controller.php:214
 #: templates/partials/navigation.php:21
 #: assets/admin-src/app/App.tsx:253
@@ -1263,6 +1264,10 @@ msgstr ""
 msgid "Linked list of articles."
 msgstr ""
 
+#: assets/product-panel-src/ProductLinkPicker.tsx:71
+msgid "Linked products"
+msgstr ""
+
 #: assets/admin-src/app/App.tsx:155
 msgid "Loading Nirdeshio…"
 msgstr ""
@@ -1489,7 +1494,7 @@ msgstr ""
 msgid "Nirdeshio could not load the workspace."
 msgstr ""
 
-#: itsmanzur-docs.php:39
+#: itsmanzur-docs.php:49
 msgid "Nirdeshio could not start because its Composer dependencies are missing. Run composer install in the plugin directory."
 msgstr ""
 
@@ -1878,6 +1883,10 @@ msgstr ""
 msgid "Priority email"
 msgstr ""
 
+#: includes/Integrations/WooCommerce/REST/Product_Link_Controller.php:152
+msgid "Product %d does not exist."
+msgstr ""
+
 #: assets/admin-src/components/HelpGuide.tsx:390
 msgid "Project"
 msgstr ""
@@ -2108,6 +2117,10 @@ msgstr ""
 msgid "Save, then preview the visitor-facing page."
 msgstr ""
 
+#: assets/product-panel-src/ProductLinkPicker.tsx:88
+msgid "Saving…"
+msgstr ""
+
 #: assets/admin-src/components/Settings.tsx:762
 msgid "Scoped yourself under .itsdz-docs. Executable CSS is stripped on save."
 msgstr ""
@@ -2143,6 +2156,10 @@ msgstr ""
 
 #: includes/Taxonomies/Section_Taxonomy.php:127
 msgid "Search Sections"
+msgstr ""
+
+#: assets/product-panel-src/ProductLinkPicker.tsx:76
+msgid "Search WooCommerce products…"
 msgstr ""
 
 #: templates/partials/shell-end.php:34
@@ -2190,6 +2207,7 @@ msgid "Search, sections, and a public portal — skip any time. Nothing is force
 msgstr ""
 
 #: assets/frontend-src/search.ts:87
+#: assets/product-panel-src/ProductLinkPicker.tsx:83
 msgid "Searching…"
 msgstr ""
 
@@ -2940,6 +2958,10 @@ msgstr ""
 msgid "Will Nirdeshio slow down my site?"
 msgstr ""
 
+#: assets/product-panel-src/ProductDocsPanel.tsx:27
+msgid "WooCommerce products"
+msgstr ""
+
 #: assets/admin-src/components/SetupWizard.tsx:183
 msgid "WordPress Plugin"
 msgstr ""
@@ -3104,6 +3126,10 @@ msgstr ""
 
 #: includes/Admin/Dashboard_Widget.php:115
 msgid "unsectioned"
+msgstr ""
+
+#: includes/Integrations/WooCommerce/REST/Product_Link_Controller.php:134
+msgid "wc_product_ids must be an array of product IDs."
 msgstr ""
 
 #: includes/PostTypes/Article_Post_Type.php:43

@@ -10,11 +10,11 @@ defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'itsdz_is_pro_active' ) ) {
 	/**
-	 * Whether a Pro (or other) add-on has identified itself as active.
+	 * Whether an add-on has identified itself as active.
 	 *
 	 * An add-on calls `add_filter( 'itsdz_is_pro_active', '__return_true' )`
 	 * in its own bootstrap. This is informational only — for UI decisions
-	 * like showing or hiding an "Upgrade to Pro" notice — never a gate on
+	 * like showing or hiding an add-on notice — never a gate on
 	 * functionality Free itself provides.
 	 *
 	 * @return bool

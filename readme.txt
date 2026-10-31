@@ -3,7 +3,7 @@ Contributors: itsmanzur
 Tags: documentation, knowledge base, docs, help center, product docs
 Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -53,6 +53,7 @@ Most documentation plugins load heavy JavaScript, conflict with popular themes, 
 * **Markdown import** — drop in a `.md` file and it lands as a draft article, ready to review and publish
 * One-click sample content — publishes a complete demo knowledge base so you can see the result before writing anything, and removes it just as easily
 * **Glossary** — define your product's terminology once; the first mention of each term in an article is highlighted with a tooltip definition, and the full list can be embedded anywhere
+* **WooCommerce product docs** — link articles to products; linked products get a "Documentation" tab
 * Translation-ready, RTL support
 * SEO plugin compatible (Yoast SEO, Rank Math, AIOSEO)
 
@@ -90,22 +91,14 @@ Glossary auto-highlighting never touches links, headings or code samples, and ca
 
 `add_filter( 'itsdz_glossary_autolink', '__return_false' );`
 
-= Nirdeshio Pro =
+= WooCommerce Integration =
 
-**Available now**, as a separate add-on plugin (requires this free plugin to be active):
+Selling a product? Link its documentation to it.
 
-* WooCommerce integration — link articles to products; linked products automatically get a "Documentation" tab listing them
-
-**Coming soon to Nirdeshio Pro:**
-
-* Knowledge base switcher UI for managing many projects at once
-* Product versioning (v1.x / v2.x switcher with version-specific URLs)
-* Advanced analytics dashboard (health score, no-result searches, exit rate)
-* Access control (role-based, password-protected, buyer-gated docs)
-* Additional templates + visual customizer
-* Contributor workflow (review, approval, scheduled publishing)
-* Importers for BetterDocs, EazyDocs, weDocs, Echo Knowledge Base, Markdown, CSV
-* AI assistant (outline generator, draft from existing content, FAQ generator)
+* In the article editor, a **WooCommerce products** panel lets you search and link one or more products to the article.
+* Linked products automatically get a **Documentation** tab listing every published article linked to them.
+* Only published articles in published knowledge bases are shown, so drafts never leak.
+* Nothing loads unless WooCommerce is active.
 
 = Privacy =
 
@@ -179,7 +172,7 @@ As many as you like — there is no limit in the free version.
 
 = Where is my data stored? =
 
-All data is stored in your WordPress database. Nirdeshio creates four custom tables: `{prefix}itsdz_search_index`, `{prefix}itsdz_search_log`, `{prefix}itsdz_feedback`, and `{prefix}itsdz_views`. Articles and knowledge bases are stored as standard WordPress custom post types and can be exported like any other post type.
+All data is stored in your WordPress database. Nirdeshio creates five custom tables: `{prefix}itsdz_search_index`, `{prefix}itsdz_search_log`, `{prefix}itsdz_feedback`, `{prefix}itsdz_views`, and `{prefix}itsdz_product_links` (which article is linked to which WooCommerce product). Articles and knowledge bases are stored as standard WordPress custom post types and can be exported like any other post type.
 
 == Screenshots ==
 
@@ -191,6 +184,13 @@ All data is stored in your WordPress database. Nirdeshio creates four custom tab
 6. Dark mode — automatically respects the visitor's system preference with a manual override toggle.
 
 == Changelog ==
+
+= 1.2.0 =
+**New: WooCommerce product documentation, now free**
+
+* Link articles to WooCommerce products from a sidebar panel in the article editor; linked products get a "Documentation" tab.
+* Declares compatibility with WooCommerce High-Performance Order Storage.
+* This feature previously lived in a separate add-on; it is now part of the plugin and there is no Pro version to buy. Existing product links keep working.
 
 = 1.1.1 =
 **New: Onboarding wizard**
@@ -293,6 +293,9 @@ All data is stored in your WordPress database. Nirdeshio creates four custom tab
 * REST API (`itsdz/v1`) for admin and public endpoints.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+Adds free WooCommerce product documentation tabs. Adds one small database table on upgrade.
 
 = 1.1.1 =
 Adds a skippable first-run setup wizard, the [nirdeshio_docs] shortcode, and an optional local-only setup analytics toggle. Existing documentation is not changed.

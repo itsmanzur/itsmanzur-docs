@@ -418,7 +418,7 @@ final class KB_Controller extends REST_Controller {
 			'counts'    => $counts,
 			'attention' => $attention,
 			'recent'    => $recent,
-			// A generic extension point: Nirdeshio Pro (or any other add-on)
+			// A generic extension point: Any add-on
 			// hooks this to add its own data — analytics today, whatever
 			// else later — without Free ever needing to know the shape, or
 			// even that "analytics" is a concept that exists.

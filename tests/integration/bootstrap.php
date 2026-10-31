@@ -39,6 +39,13 @@ if ( ! is_readable( $itsdz_tests_dir . '/includes/functions.php' ) ) {
 
 require_once $itsdz_tests_dir . '/includes/functions.php';
 
+/*
+ * A real WooCommerce install is not loaded here — see wc-stubs.php. Must happen before the
+ * plugin loads, since Plugin::get_services() decides whether to register the WooCommerce
+ * integration by checking function_exists('WC') once, at boot.
+ */
+require_once __DIR__ . '/wc-stubs.php';
+
 /**
  * Load Nirdeshio before WordPress finishes booting so its hooks are in place.
  */

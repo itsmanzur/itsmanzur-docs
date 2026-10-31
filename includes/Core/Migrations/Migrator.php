@@ -59,14 +59,18 @@ final class Migrator implements Service {
 	public function run() {
 		$installed_version = (string) get_option( self::VERSION_OPTION, '0.0.0' );
 		$changes           = array();
-		$schema_complete   = Migration_1_0_0::is_complete();
+		$schema_complete   = Migration_1_0_0::is_complete() && Migration_1_1_0::is_complete();
 
-		if ( version_compare( $installed_version, Migration_1_0_0::VERSION, '<' ) || ! $schema_complete ) {
+		if ( version_compare( $installed_version, Migration_1_0_0::VERSION, '<' ) || ! Migration_1_0_0::is_complete() ) {
 			$migration = new Migration_1_0_0();
 			$changes   = $migration->up();
-
-			$schema_complete = Migration_1_0_0::is_complete();
 		}
+
+		if ( version_compare( $installed_version, Migration_1_1_0::VERSION, '<' ) || ! Migration_1_1_0::is_complete() ) {
+			$changes = array_merge( $changes, ( new Migration_1_1_0() )->up() );
+		}
+
+		$schema_complete = Migration_1_0_0::is_complete() && Migration_1_1_0::is_complete();
 
 		if ( $schema_complete && version_compare( $installed_version, ITSDZ_DB_VERSION, '<' ) ) {
 			update_option( self::VERSION_OPTION, ITSDZ_DB_VERSION, false );
@@ -83,6 +87,6 @@ final class Migrator implements Service {
 	private function is_current() {
 		$installed_version = (string) get_option( self::VERSION_OPTION, '0.0.0' );
 
-		return ! version_compare( $installed_version, ITSDZ_DB_VERSION, '<' ) && Migration_1_0_0::is_complete();
+		return ! version_compare( $installed_version, ITSDZ_DB_VERSION, '<' ) && Migration_1_0_0::is_complete() && Migration_1_1_0::is_complete();
 	}
 }

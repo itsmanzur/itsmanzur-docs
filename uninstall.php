@@ -33,6 +33,7 @@ $itsdz_tables = array(
 	$wpdb->prefix . 'itsdz_search_log',
 	$wpdb->prefix . 'itsdz_feedback',
 	$wpdb->prefix . 'itsdz_views',
+	$wpdb->prefix . 'itsdz_product_links',
 );
 
 foreach ( $itsdz_tables as $itsdz_table ) {

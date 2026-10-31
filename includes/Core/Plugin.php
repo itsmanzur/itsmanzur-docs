@@ -9,6 +9,7 @@ namespace ItsDZ\Doczur\Core;
 
 use ItsDZ\Doczur\Admin\Admin_Menu;
 use ItsDZ\Doczur\Admin\Editor_Panel_Assets;
+use ItsDZ\Doczur\Admin\Product_Panel_Assets;
 use ItsDZ\Doczur\Admin\Assets as Admin_Assets;
 use ItsDZ\Doczur\Admin\Dashboard_Widget;
 use ItsDZ\Doczur\Admin\Onboarding;
@@ -21,6 +22,7 @@ use ItsDZ\Doczur\Frontend\Llms_Txt;
 use ItsDZ\Doczur\Frontend\Rewrite_Manager;
 use ItsDZ\Doczur\Frontend\Shortcode;
 use ItsDZ\Doczur\Frontend\Template_Loader;
+use ItsDZ\Doczur\Integrations\WooCommerce\Bootstrap as WooCommerce_Bootstrap;
 use ItsDZ\Doczur\PostTypes\Article_Post_Type;
 use ItsDZ\Doczur\PostTypes\KB_Post_Type;
 use ItsDZ\Doczur\PostTypes\Meta_Fields;
@@ -147,8 +149,15 @@ final class Plugin {
 			new Rewrite_Manager(),
 		);
 
+		// Only with WooCommerce active. The old separate "Doczur Pro" add-on carried this same
+		// feature; if it is still active it keeps doing so, so the two never register twice.
+		if ( function_exists( 'WC' ) && ! class_exists( 'ItsDZ\\DoczurPro\\Bootstrap' ) ) {
+			$services[] = new WooCommerce_Bootstrap();
+			$services[] = new Product_Panel_Assets();
+		}
+
 		/**
-		 * Let add-on plugins (Nirdeshio Pro, or any third party) register their
+		 * Let add-on plugins (or any third party) register their
 		 * own Service instances, without Free ever needing to know who is
 		 * using this filter or why. This is the one and only extension
 		 * point for adding backend behavior to Nirdeshio.

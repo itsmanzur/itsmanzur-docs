@@ -6,6 +6,7 @@ module.exports = {
 		admin: './assets/admin-src/index.tsx',
 		blocks: './assets/blocks-src/index.tsx',
 		'editor-panel': './assets/editor-panel-src/index.tsx',
+		'product-panel': './assets/product-panel-src/index.tsx',
 		frontend: './assets/frontend-src/index.ts',
 	},
 	output: {
