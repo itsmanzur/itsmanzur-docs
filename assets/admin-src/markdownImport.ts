@@ -1,8 +1,7 @@
 /**
  * Minimal Markdown → HTML for a single imported article.
  *
- * This is intentionally small: one file becomes one draft. Full importers
- * (BetterDocs, CSV, nested trees) stay in Pro.
+ * This is intentionally small: one file becomes one draft.
  *
  * @param markdown
  */

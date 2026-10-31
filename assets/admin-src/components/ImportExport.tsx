@@ -194,7 +194,7 @@ export function ImportExport( { project }: { project: Project } ) {
 						</div>
 						<p className="itsdz-transfer-desc">
 							{ __(
-								'Turn one .md file into a draft article. The first heading becomes the title. Nested docs importers stay in Pro.',
+								'Turn one .md file into a draft article. The first heading becomes the title.',
 								'itsmanzur-docs'
 							) }
 						</p>

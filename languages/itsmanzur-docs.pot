@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T14:07:34+00:00\n"
+"POT-Creation-Date: 2026-10-31T15:40:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: tools/make-pot.php\n"
 "X-Domain: itsmanzur-docs\n"
@@ -262,10 +262,6 @@ msgstr ""
 msgid "An article belongs to exactly one section. Reach for tags when you want it to appear in more than one place."
 msgstr ""
 
-#: assets/admin-src/app/App.tsx:315
-msgid "Analytics"
-msgstr ""
-
 #: assets/admin-src/components/Settings.tsx:843
 msgid "Anonymous setup drop-off on this site (step number and timestamp only)."
 msgstr ""
@@ -326,11 +322,11 @@ msgstr ""
 msgid "Article navigation"
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:157
+#: includes/REST/Analytics_Controller.php:153
 msgid "Article post ID (single-article response only)."
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:129
+#: includes/REST/Analytics_Controller.php:125
 msgid "Article post ID to fetch views for."
 msgstr ""
 
@@ -1212,11 +1208,11 @@ msgstr ""
 msgid "Knowledge base"
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:169
+#: includes/REST/Analytics_Controller.php:165
 msgid "Knowledge base ID (KB response only)."
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:136
+#: includes/REST/Analytics_Controller.php:132
 msgid "Knowledge base ID to fetch aggregated views for."
 msgstr ""
 
@@ -1290,7 +1286,7 @@ msgstr ""
 msgid "Manage the glossary"
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:175
+#: includes/REST/Analytics_Controller.php:171
 msgid "Map of article_id to total view count."
 msgstr ""
 
@@ -1899,7 +1895,7 @@ msgstr ""
 msgid "Projects"
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:77
+#: includes/REST/Analytics_Controller.php:73
 msgid "Provide either article_id or kb_id."
 msgstr ""
 
@@ -2695,7 +2691,7 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: includes/REST/Analytics_Controller.php:163
+#: includes/REST/Analytics_Controller.php:159
 msgid "Total recorded views for the article."
 msgstr ""
 
@@ -2713,7 +2709,7 @@ msgid "Troubleshooting checklist"
 msgstr ""
 
 #: assets/admin-src/components/ImportExport.tsx:196
-msgid "Turn one .md file into a draft article. The first heading becomes the title. Nested docs importers stay in Pro."
+msgid "Turn one .md file into a draft article. The first heading becomes the title."
 msgstr ""
 
 #: assets/admin-src/components/SetupWizard.tsx:393

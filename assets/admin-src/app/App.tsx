@@ -301,19 +301,6 @@ export function App() {
 							{ label }
 						</Button>
 					) ) }
-					<Button disabled className="itsdz-pro-nav">
-						<span
-							className="dashicons dashicons-chart-bar"
-							aria-hidden="true"
-							style={ {
-								marginInlineEnd: '8px',
-								fontSize: '17px',
-								width: '17px',
-								height: '17px',
-							} }
-						/>
-						{ __( 'Analytics', 'itsmanzur-docs' ) } <small>PRO</small>
-					</Button>
 				</nav>
 
 				<main className="itsdz-main">

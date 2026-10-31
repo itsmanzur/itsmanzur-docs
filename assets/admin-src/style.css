@@ -153,17 +153,6 @@
 	box-shadow: inset 3px 0 0 var(--itsdz-accent-dark);
 }
 
-.itsdz-pro-nav small {
-	margin-inline-start: auto;
-	padding: 2px 6px;
-	color: #854d0e;
-	font-size: 9px;
-	font-weight: 700;
-	background: #fef9c3;
-	border: 1px solid #fef08a;
-	border-radius: 4px;
-}
-
 .itsdz-main {
 	min-width: 0;
 	padding: 24px;

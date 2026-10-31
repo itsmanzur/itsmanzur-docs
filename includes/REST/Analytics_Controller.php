@@ -1,14 +1,10 @@
 <?php
 /**
- * Analytics REST controller (Free tier).
+ * Analytics REST controller.
  *
- * Free endpoints exposed here:
+ * Endpoints exposed here:
  *   GET /itsdz/v1/analytics/views?article_id=N   — total views for one article
  *   GET /itsdz/v1/analytics/views?kb_id=N        — view totals for all articles in a KB
- *
- * Pro-only endpoints (analytics dashboard, health score, no-result report,
- * exit rate, weekly email) will be added in a separate Pro controller that
- * extends this one or registers alongside it.
  *
  * @package ItsDZ\Doczur\REST
  */
