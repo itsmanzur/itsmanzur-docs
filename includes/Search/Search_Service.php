@@ -118,7 +118,8 @@ final class Search_Service {
 				'id'        => $article->ID,
 				'title'     => get_the_title( $article ),
 				'url'       => get_permalink( $article ),
-				'excerpt'   => wp_trim_words( wp_strip_all_tags( $article->post_content ), 30 ),
+				// Decoded: the modal sets this as plain text, so a raw &hellip; or &amp; would show as typed.
+				'excerpt'   => wp_trim_words( html_entity_decode( wp_strip_all_tags( $article->post_content ), ENT_QUOTES, 'UTF-8' ), 30, '…' ),
 				'relevance' => round( (float) $row->relevance, 4 ),
 			);
 		}

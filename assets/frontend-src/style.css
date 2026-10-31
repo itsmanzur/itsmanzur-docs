@@ -35,6 +35,16 @@
 	box-sizing: inherit;
 }
 
+/* Themes often colour headings globally (h1 { color: dark }), which makes them invisible in dark mode. */
+.itsdz-docs h1,
+.itsdz-docs h2,
+.itsdz-docs h3,
+.itsdz-docs h4,
+.itsdz-docs h5,
+.itsdz-docs h6 {
+	color: var(--itsdz-text);
+}
+
 .itsdz-docs a {
 	color: var(--itsdz-brand-strong);
 	text-decoration: none;
