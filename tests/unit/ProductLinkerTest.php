@@ -71,6 +71,20 @@ final class ProductLinkerTest extends TestCase {
 	}
 
 	/**
+	 * A password-protected article is never listed, even when published.
+	 *
+	 * @return void
+	 */
+	public function test_password_protected_article_is_not_visible() {
+		$article = (object) array(
+			'post_status'   => 'publish',
+			'post_password' => 'secret',
+		);
+
+		$this->assertFalse( Product_Linker::is_article_publicly_visible( $article, $this->kb( 'publish' ) ) );
+	}
+
+	/**
 	 * A deleted article (get_post() returned null) is never visible.
 	 *
 	 * @return void

@@ -157,7 +157,11 @@ final class Product_Link_Controller extends REST_Controller {
 			$valid_ids[] = $product_id;
 		}
 
-		$this->linker->set_links( $article->ID, $valid_ids );
+		$saved = $this->linker->set_links( $article->ID, $valid_ids );
+
+		if ( is_wp_error( $saved ) ) {
+			return $saved;
+		}
 
 		return rest_ensure_response( array( 'wc_product_ids' => $valid_ids ) );
 	}

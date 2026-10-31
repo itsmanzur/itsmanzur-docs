@@ -190,7 +190,7 @@ All data is stored in your WordPress database. Nirdeshio creates five custom tab
 
 * Link articles to WooCommerce products from a sidebar panel in the article editor; linked products get a "Documentation" tab.
 * Declares compatibility with WooCommerce High-Performance Order Storage.
-* This feature previously lived in a separate add-on; it is now part of the plugin and there is no Pro version to buy. Existing product links keep working.
+* This feature previously lived in a separate add-on; it is now part of the plugin and free. Existing product links keep working.
 
 = 1.1.1 =
 **New: Onboarding wizard**
@@ -273,7 +273,7 @@ All data is stored in your WordPress database. Nirdeshio creates five custom tab
 **Under the hood**
 
 * Added a WordPress integration test suite alongside the existing unit tests.
-* Added a small extension architecture: the `itsdz_services` filter lets an add-on register its own backend services, `itsdz_kb_overview_extra` lets one add data to the Documentation screen's overview panel, and `itsdz_is_pro_active()` is a simple informational check for "is an add-on active" — none of it is used by anything in this free plugin itself.
+* Added a small extension architecture: the `itsdz_services` filter lets an add-on register its own backend services, `itsdz_kb_overview_extra` lets one add data to the Documentation screen's overview panel, and `itsdz_is_pro_active()` is a simple informational check for "is an add-on active". None of it is used by this plugin itself.
 
 = 0.1.0 =
 * Initial public release.

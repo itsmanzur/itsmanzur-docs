@@ -59,6 +59,18 @@ final class Rate_Limiter {
 	public function get_ip_hash() {
 		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
 
+		/**
+		 * Filter the client IP used for rate limiting and duplicate-vote checks.
+		 *
+		 * Defaults to REMOTE_ADDR. Behind a reverse proxy or CDN every visitor shares
+		 * one address, so a site owner can return the real client IP here (for
+		 * example from a header their proxy sets and they trust). Forwarded-for
+		 * headers are never trusted automatically.
+		 *
+		 * @param string $ip Client IP address, or 'unknown'.
+		 */
+		$ip = (string) apply_filters( 'itsdz_client_ip', $ip );
+
 		if ( 'unknown' !== $ip && ! filter_var( $ip, FILTER_VALIDATE_IP ) ) {
 			$ip = 'unknown';
 		}

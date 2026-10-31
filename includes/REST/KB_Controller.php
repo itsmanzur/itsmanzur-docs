@@ -207,7 +207,7 @@ final class KB_Controller extends REST_Controller {
 		/**
 		 * Cap the number of documentation projects a site may create.
 		 *
-		 * 0 (the default) means no cap. This is not a Free/Pro gate — it
+		 * 0 (the default) means no cap. Nirdeshio never limits projects itself. It
 		 * exists so a site owner (or another plugin) can impose a limit of
 		 * their own if they want one; nothing in Nirdeshio itself ever sets
 		 * this away from unlimited.

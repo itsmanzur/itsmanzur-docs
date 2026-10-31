@@ -54,7 +54,7 @@ final class Product_Linker {
 	 *
 	 * @param int   $article_id     Article post ID.
 	 * @param int[] $wc_product_ids Product IDs, in display order.
-	 * @return void
+	 * @return true|\WP_Error True on success, WP_Error when the table could not be written.
 	 */
 	public function set_links( $article_id, array $wc_product_ids ) {
 		global $wpdb;
@@ -63,7 +63,11 @@ final class Product_Linker {
 		$article_id = absint( $article_id );
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$wpdb->delete( $table, array( 'article_id' => $article_id ), array( '%d' ) );
+		$deleted = $wpdb->delete( $table, array( 'article_id' => $article_id ), array( '%d' ) );
+
+		if ( false === $deleted ) {
+			return $this->write_error();
+		}
 
 		foreach ( array_values( array_unique( array_map( 'absint', $wc_product_ids ) ) ) as $order => $wc_product_id ) {
 			if ( ! $wc_product_id ) {
@@ -71,7 +75,7 @@ final class Product_Linker {
 			}
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-			$wpdb->insert(
+			$inserted = $wpdb->insert(
 				$table,
 				array(
 					'article_id'    => $article_id,
@@ -81,12 +85,31 @@ final class Product_Linker {
 				),
 				array( '%d', '%d', '%d', '%s' )
 			);
+
+			if ( false === $inserted ) {
+				return $this->write_error();
+			}
 		}
 
 		Cache::bump_generation( 'product-tab-by-article', $article_id );
 		foreach ( $wc_product_ids as $wc_product_id ) {
 			Cache::bump_generation( 'product-tab', absint( $wc_product_id ) );
 		}
+
+		return true;
+	}
+
+	/**
+	 * Build the error returned when a write to the link table fails.
+	 *
+	 * @return \WP_Error
+	 */
+	private function write_error() {
+		return new \WP_Error(
+			'itsdz_product_links_failed',
+			__( 'The product links could not be saved.', 'itsmanzur-docs' ),
+			array( 'status' => 500 )
+		);
 	}
 
 	/**
@@ -144,7 +167,7 @@ final class Product_Linker {
 	 * @return bool
 	 */
 	public static function is_article_publicly_visible( $article, $kb ) {
-		if ( ! $article || 'publish' !== $article->post_status ) {
+		if ( ! $article || 'publish' !== $article->post_status || ! empty( $article->post_password ) ) {
 			return false;
 		}
 

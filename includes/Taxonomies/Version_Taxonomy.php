@@ -14,7 +14,7 @@ use ItsDZ\Doczur\Security\Capabilities;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the internal Pro-ready version relation.
+ * Registers the version taxonomy used to tag articles with a product version.
  */
 final class Version_Taxonomy implements Service {
 	/**
@@ -32,7 +32,7 @@ final class Version_Taxonomy implements Service {
 	}
 
 	/**
-	 * Register the version taxonomy without exposing its Pro UI.
+	 * Register the version taxonomy; it has no admin menu of its own.
 	 *
 	 * @return void
 	 */

@@ -12,10 +12,10 @@ if ( ! function_exists( 'itsdz_is_pro_active' ) ) {
 	/**
 	 * Whether an add-on has identified itself as active.
 	 *
-	 * An add-on calls `add_filter( 'itsdz_is_pro_active', '__return_true' )`
-	 * in its own bootstrap. This is informational only — for UI decisions
-	 * like showing or hiding an add-on notice — never a gate on
-	 * functionality Free itself provides.
+	 * A generic check for third-party extensions: an add-on can call
+	 * `add_filter( 'itsdz_is_pro_active', '__return_true' )` in its own bootstrap.
+	 * Nothing in Nirdeshio uses it and it never gates a feature. The name is
+	 * kept so existing extensions keep working.
 	 *
 	 * @return bool
 	 */

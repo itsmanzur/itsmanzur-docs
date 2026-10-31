@@ -54,7 +54,7 @@ final class Product_Tab {
 	 * @return array<string, mixed>
 	 */
 	public function maybe_add_tab( $tabs ) {
-		$product_id = get_the_ID();
+		$product_id = $this->current_product_id();
 
 		if ( ! $product_id || empty( $this->get_articles( $product_id ) ) ) {
 			return $tabs;
@@ -75,7 +75,7 @@ final class Product_Tab {
 	 * @return void
 	 */
 	public function render_tab() {
-		$product_id = get_the_ID();
+		$product_id = $this->current_product_id();
 		$articles   = $product_id ? $this->get_articles( $product_id ) : array();
 
 		if ( ! $articles ) {
@@ -94,6 +94,24 @@ final class Product_Tab {
 			</ul>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Resolve the product being shown.
+	 *
+	 * Prefers WooCommerce's own global product, since page builders and block
+	 * templates can change what get_the_ID() returns inside the tab.
+	 *
+	 * @return int
+	 */
+	private function current_product_id() {
+		global $product;
+
+		if ( $product instanceof \WC_Product ) {
+			return (int) $product->get_id();
+		}
+
+		return (int) get_the_ID();
 	}
 
 	/**
