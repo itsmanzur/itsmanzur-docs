@@ -39,10 +39,17 @@ cp -r build "$STAGE/$SLUG/build"
 [ -f "$STAGE/$SLUG/vendor/autoload.php" ] || { echo "FAIL: vendor/autoload.php missing from the release" >&2; exit 1; }
 
 rm -f "$OUT"
-(cd "$STAGE" && if command -v zip >/dev/null 2>&1; then zip -qr "$OUT" "$SLUG"; else tar -a -cf "$OUT" "$SLUG"; fi)
+if command -v zip >/dev/null 2>&1; then
+	(cd "$STAGE" && zip -qr "$OUT" "$SLUG")
+elif command -v bsdtar >/dev/null 2>&1; then
+	(cd "$STAGE" && bsdtar -a -cf "$OUT" "$SLUG")
+else
+	# Windows ships bsdtar, which writes real zip archives; GNU tar does not.
+	(cd "$STAGE" && /c/Windows/System32/tar.exe -a -cf "$OUT" "$SLUG")
+fi
 
 # Verify the finished archive, not just the staging folder.
-LIST="$(unzip -l "$OUT" 2>/dev/null || tar -tf "$OUT")"
+LIST="$(unzip -l "$OUT")"
 for required in "$SLUG/vendor/autoload.php" "$SLUG/build/frontend.js" "$SLUG/readme.txt"; do
 	echo "$LIST" | grep -q "$required" || { echo "FAIL: $required missing from $OUT" >&2; exit 1; }
 done
